@@ -13,7 +13,10 @@ export default function PizzaList({toppingPizza}) {
     }, [])
 
     async function getPizza() {
-        Request.get('http://localhost:3000/pizzas/'+toppingPizza.pizza_id)
+        Request.get(`http://localhost:3000/pizzas/${toppingPizza.pizza_id}`, 
+        {headers:{
+            'Content-Type': 'application/json'
+        }})
         .then(res => res.json())
         .then(response => setPizza(response))
         .catch(err => console.log(err.message))
@@ -26,7 +29,7 @@ export default function PizzaList({toppingPizza}) {
                 <Button 
                     sm={1}
                     color="primary" 
-                    onClick={()=>console.log('http://localhost:3000/pizzas/'+toppingPizza.pizza_id)} 
+                    onClick={()=>console.log(toppingPizza.pizza_id)} 
                     style={{ marginBottom: '1rem'}}
                     className="float-right"
                 >Edit
