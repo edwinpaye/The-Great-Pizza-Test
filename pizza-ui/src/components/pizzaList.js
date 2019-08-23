@@ -1,32 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {Row, Col} from 'reactstrap';
 
-export default function List({name}) {
+export default function List({name, component, items}) {
     const [states, setStates] = useState({todos: []})
     // const [open, setOpen] = useState(false)
     const [topping, setTopping] = useState('')
 
-    function getPizzas() {
-        fetch('http://localhost:3000/gettoppings')
-        .then(res => res.json())
-        .then((data) => setStates({todos: data}))
-        .catch(err => console.log(err.message))
-    }
-
-    function postTopping(name){
-        fetch('http://localhost:3000/toppings', {
-            method: 'POST',
-            body: JSON.stringify({topping_name: name}),
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
-    }
-
     useEffect(() => {
-        getPizzas()
+        // getPizzas()
     }, [])
 
     return (
@@ -36,7 +17,7 @@ export default function List({name}) {
                 <h1 style={{textAlign: 'center'}}>{name}</h1>
                 {/* <h1>La puerta esta {open ? 'abierta' : 'cerrada'}</h1> */}
                 {/* <button onClick={() => setOpen(!open)}>{open ? 'Cerrar' : 'Abrir'}</button> */}
-                <button onClick={() => postTopping(topping)}>post</button>
+                {/* <button onClick={() => postTopping(topping)}>post</button>
                 <button onClick={() => getPizzas()}>refresh</button>
                 <form>
                     <label>
@@ -46,7 +27,8 @@ export default function List({name}) {
                 </form>
                 <ul>
                     {states.todos.map(post => <li key={post.topping_id}>{post.topping_id}: {post.topping_name}</li>)}
-                </ul>
+                </ul> */}
+                {items.map((item)=>component('componentePizza', item.pizza_id))}
               </Col>
             </Row>
         </div>

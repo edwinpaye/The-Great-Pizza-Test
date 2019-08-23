@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 // import classnames from 'classnames';
 import List from './list';
+import PizzaContent from './pizzaContent';
+import Request from './request';
 
 export default function Home(){
 
-    const [state, setState] = useState({
-        activeTab: '1'
-    });
+    const [state, setState] = useState({activeTab: '1'});
+    const [pizzas, setPizzas] = useState([]);
+
+    useEffect(() => {
+        Request.get('http://localhost:3000/pizzas')
+        .then(res => res.json())
+        .then(response => setPizzas(response))
+        .catch(err => console.log(err.message))
+    }, [])
 
     function toggle(tab) {
         if (state.activeTab !== tab) {
@@ -17,22 +25,17 @@ export default function Home(){
         }
     }
 
+    function pizza(name, key) {
+        return(
+            <PizzaContent name={name} key={key}/>
+        )
+    }
+
     return(
         <div>
-        {/* <Nav pills>
-          <NavItem>
-          </NavItem>
-            {
-            universidades.map((univ, i) => {
-                return(
-                    <option key={univ.id} value={i}>{univ.nombre}</option>
-                );
-            })
-            }
-        </Nav> */}
         <TabContent activeTab={state.activeTab}>
           <TabPane tabId="1">
-              <List name='Toppings'/>
+              <List name='Pizzas' component={pizza} items={pizzas}/>
           </TabPane>
           <TabPane tabId="2">
             <Row>
