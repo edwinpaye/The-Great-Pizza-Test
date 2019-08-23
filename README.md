@@ -1,19 +1,23 @@
 Pizza Order RestAPI
 ====
 This is a Backend and FrontEnd project based on node.js technologies, and they are organized as follow:
-Backend RestAPIs
+Technologies Used:
 ====
-1. [Loopback](https://loopback.io/)
+**Backend RestAPIs**
+1. [Loopback](https://loopback.io/), Loopback CLI
+2. TypeScript
+3. Docker-Compose for mongodb
 ---
-FrontEnd
-====
+**FrontEnd**
 1. [Bootstrap](https://getbootstrap.com/)
-2. [Reactstrap] (https://reactstrap.github.io/)
+2. [Reactstrap](https://reactstrap.github.io/)
+3. ReactJS, React-CLI
+4. TypeScript
 ---
 Requirements:
 ====
 1. To have installed docker.
-2. To have installed git
+2. To have installed git.
 3. To installed nodejs installed min version 10.13.0 or higher
 ---
 Steps:
