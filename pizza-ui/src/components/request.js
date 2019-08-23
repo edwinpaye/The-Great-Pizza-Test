@@ -1,10 +1,9 @@
 export default Request = {
     
     get: (route) => {
-        return fetch(route)
-        // .then(res => res.json())
-        // .then(response => console.log('Success:', response))
-        // .catch(err => console.log(err.message))
+        return fetch(route, {headers:{
+            'Content-Type': 'application/json'
+        }})
     },
 
     post: (route, obj) => {

@@ -1,36 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import {Row, Col} from 'reactstrap';
+import {Form, Label, Button, Collapse} from 'reactstrap';
+import PizzaContent from './pizzaContent';
+import Request from './request';
 
-export default function List({name, component, items}) {
-    const [states, setStates] = useState({todos: []})
-    // const [open, setOpen] = useState(false)
-    const [topping, setTopping] = useState('')
+export default function PizzaList({toppingPizza}) {
+
+    const [state, setState] = useState(false)
+    const [pizza, setPizza] = useState({})
 
     useEffect(() => {
-        // getPizzas()
+        getPizza();
     }, [])
 
+    async function getPizza() {
+        Request.get('http://localhost:3000/pizzas/'+toppingPizza.pizza_id)
+        .then(res => res.json())
+        .then(response => setPizza(response))
+        .catch(err => console.log(err.message))
+    }
+    
     return (
         <div>
-            <Row>
-              <Col sm="12">
-                <h1 style={{textAlign: 'center'}}>{name}</h1>
-                {/* <h1>La puerta esta {open ? 'abierta' : 'cerrada'}</h1> */}
-                {/* <button onClick={() => setOpen(!open)}>{open ? 'Cerrar' : 'Abrir'}</button> */}
-                {/* <button onClick={() => postTopping(topping)}>post</button>
-                <button onClick={() => getPizzas()}>refresh</button>
-                <form>
-                    <label>
-                        Topping:
-                        <input type="text" value={topping} onChange={(event)=>setTopping(event.target.value)} />
-                    </label>
-                </form>
-                <ul>
-                    {states.todos.map(post => <li key={post.topping_id}>{post.topping_id}: {post.topping_name}</li>)}
-                </ul> */}
-                {items.map((item)=>component('componentePizza', item.pizza_id))}
-              </Col>
-            </Row>
+            <Form inline>
+                <Label sm={8} size="lg">{pizza.pizza_name}</Label>  
+                <Button 
+                    sm={1}
+                    color="primary" 
+                    onClick={()=>console.log('http://localhost:3000/pizzas/'+toppingPizza.pizza_id)} 
+                    style={{ marginBottom: '1rem'}}
+                    className="float-right"
+                >Edit
+                </Button>
+                <Button 
+                    sm={1}
+                    color="danger" 
+                    onClick={()=>setState(!state)} 
+                    style={{ marginBottom: '1rem'}}
+                    className="float-right"
+                >Delete
+                </Button>
+                <Collapse isOpen={state}>
+                    {/* <h1>Toppings:</h1> */}
+                    {/* {toppingPizza.toppings_ids.map((item, index)=>{
+                        return(
+                            <PizzaContent toppingId={item[index]} key={`${item[index]}`}/>
+                        );
+                    })} */}
+                </Collapse>
+            </Form>
         </div>
     )
 }

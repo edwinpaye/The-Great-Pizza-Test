@@ -1,31 +1,28 @@
-import React, {useState} from 'react';
-import {Button, Card, CardBody, Collapse} from 'reactstrap';
+import React, {useState, useEffect} from 'react';
+import {Alert} from 'reactstrap';
+import Request from './request';
 
-export default function PizzaContent({name}){
+export default function PizzaContent({toppingId}){
 
-    const [state, setState] = useState(false)
+    // const [state, setState] = useState(false)
+    const [topping, setTopping] = useState({})
+
+    useEffect(() => {
+        getTopping();
+    }, [])
+
+    function getTopping(){
+        Request.get('http://localhost:3000/toppings/'+toppingId)
+        .then(res => res.json())
+        .then(response => setTopping(response))
+        .catch(err => console.log(err.message))
+    }
 
     return(
         <div>
-            <Button 
-                color="primary" 
-                onClick={()=>setState(!state)} 
-                style={{ marginBottom: '1rem' }} 
-                size="lg"
-                >{name}
-            </Button>
-            <Collapse
-            isOpen={state}
-            >
-            <Card>
-                <CardBody>
-                Anim pariatur cliche reprehenderit,
-                enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                anim keffiyeh helvetica, craft beer labore wes anderson cred
-                nesciunt sapiente ea proident.
-                </CardBody>
-            </Card>
-            </Collapse>
+            <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss}>
+                {topping.topping_name}
+            </Alert>
         </div>
     )
 }
