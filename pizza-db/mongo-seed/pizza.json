@@ -1,0 +1,18 @@
+[
+    {
+        "_id" : "5d5ee6cdb4650c3284827923",
+        "pizza_name" : "Italiana"
+    },
+    {
+        "_id" : "5d5ee6cdb4650c3284827652",
+        "pizza_name" : "Casera"
+    },
+    {
+        "_id" : "5d5ee6cdb4650c3284827022",
+        "pizza_name" : "Peperoni"
+    },
+    {
+        "_id" : "5d5ee6cdb4650c3284827127",
+        "pizza_name" : "Tradicional"
+    }
+]

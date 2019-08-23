@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    ports:
+    - "27018:27017"
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongo
+  mongo-seed2:
+    build: ./mongo-seed2
+    links:
+      - mongo
+  mongo-seed3:
+    build: ./mongo-seed3
+    links:
+      - mongo

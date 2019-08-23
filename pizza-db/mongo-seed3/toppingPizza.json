@@ -1,0 +1,38 @@
+[
+    {
+        "_id" : "5d5feefef4e4c43aa5efe832",
+        "pizza_id" : "5d5ee6cdb4650c3284827923",
+        "toppings_ids" : [ 
+            "5d5feeabf4e4c43aa5efe934",
+            "5d5feeabf4e4c43aa5efe714",
+            "5d5feeabf4e4c43aa5efe245"
+        ]
+    },
+    {
+        "_id" : "5d5feefef4e4c43aa5efe161",
+        "pizza_id" : "5d5ee6cdb4650c3284827652",
+        "toppings_ids" : [ 
+            "5d5feeabf4e4c43aa5efe770",
+            "5d5feeabf4e4c43aa5efe245",
+            "5d5feeabf4e4c43aa5efe934"
+        ]
+    },
+    {
+        "_id" : "5d5feefef4e4c43aa5efe228",
+        "pizza_id" : "5d5ee6cdb4650c3284827022",
+        "toppings_ids" : [ 
+            "5d5feeabf4e4c43aa5efe934",
+            "5d5feeabf4e4c43aa5efe770",
+            "5d5feeabf4e4c43aa5efe714"
+        ]
+    },
+    {
+        "_id" : "5d5feefef4e4c43aa5efe146",
+        "pizza_id" : "5d5ee6cdb4650c3284827127",
+        "toppings_ids" : [ 
+            "5d5feeabf4e4c43aa5efe934",
+            "5d5feeabf4e4c43aa5efe770",
+            "5d5feeabf4e4c43aa5efe245"
+        ]
+    }
+]
