@@ -4,7 +4,6 @@ import Request from './request';
 
 export default function PizzaContent({toppingId}){
 
-    // const [state, setState] = useState(false)
     const [topping, setTopping] = useState({})
 
     useEffect(() => {

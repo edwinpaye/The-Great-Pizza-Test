@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { TabContent, TabPane, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
-// import classnames from 'classnames';
+import { TabContent, TabPane, Card, Button} from 'reactstrap';
 import PizzaList from './pizzaList';
 import Request from './request';
 

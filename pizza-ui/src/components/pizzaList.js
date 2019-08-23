@@ -21,6 +21,13 @@ export default function PizzaList({toppingPizza}) {
         .then(response => setPizza(response))
         .catch(err => console.log(err.message))
     }
+
+    function deletePiza(){
+        Request.remove(`http://localhost:3000/pizzas/${toppingPizza.pizza_id}`)
+        .then(res => res.json())
+        .then(response => setPizza(response))
+        .catch(err => console.log(err.message))
+    }
     
     return (
         <div>
@@ -29,7 +36,7 @@ export default function PizzaList({toppingPizza}) {
                 <Button 
                     sm={1}
                     color="primary" 
-                    onClick={()=>console.log(toppingPizza.pizza_id)} 
+                    onClick={()=>setState(!state)} 
                     style={{ marginBottom: '1rem'}}
                     className="float-right"
                 >Edit
@@ -37,13 +44,12 @@ export default function PizzaList({toppingPizza}) {
                 <Button 
                     sm={1}
                     color="danger" 
-                    onClick={()=>setState(!state)} 
+                    onClick={()=>deletePiza()} 
                     style={{ marginBottom: '1rem'}}
                     className="float-right"
                 >Delete
                 </Button>
                 <Collapse isOpen={state}>
-                    {/* <h1>Toppings:</h1> */}
                     {/* {toppingPizza.toppings_ids.map((item, index)=>{
                         return(
                             <PizzaContent toppingId={item[index]} key={`${item[index]}`}/>
