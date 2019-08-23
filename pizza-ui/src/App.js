@@ -1,13 +1,13 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-import Door from './components/lista'
+// import PizzaForm from './components/pizzaForm';
+import Home from './components/home';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Door></Door>
+        {/* <PizzaForm/> */}
+        <Home/>
       </header>
     </div>
   );
