@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { TabContent, TabPane, Card, Button} from 'reactstrap';
+import { TabContent, TabPane} from 'reactstrap';
 import PizzaList from './pizzaList';
 import Request from './request';
 
@@ -9,6 +9,13 @@ export default function Home(){
     const [state, setState] = useState('1');
 
     useEffect(() => {
+        // Request.post('http://localhost:3000/pizzas', {pizza_id: '1234dsa', pizza_name: 'Peperoni'})
+        // Request.post('http://localhost:3000/toppings', {topping_id: '1234asd', topping_name: 'Jamon'})
+        // Request.post('http://localhost:3000/toppings-pizzas', {toppings_pizza_id: "basdq12",
+        // pizza_id: "1234dsa",
+        // toppings_ids: [
+        //   "1234asd"
+        // ]})
         getPizzas();
     }, [])
 

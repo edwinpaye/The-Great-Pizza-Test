@@ -25,8 +25,16 @@ export default function PizzaList({toppingPizza}) {
     function deletePiza(){
         Request.remove(`http://localhost:3000/pizzas/${toppingPizza.pizza_id}`)
         .then(res => res.json())
-        .then(response => setPizza(response))
-        .catch(err => console.log(err.message))
+        .then(response => console.log(response))
+        .catch(err => console.log(err.message));
+        Request.remove(`http://localhost:3000/toppings/${toppingPizza.toppings_ids[0]}`)
+        .then(res => res.json())
+        .then(response => console.log(response))
+        .catch(err => console.log(err.message));
+        Request.remove(`http://localhost:3000/toppings-pizzas/${toppingPizza.toppings_pizza_id}`)
+        .then(res => res.json())
+        .then(response => console.log(response))
+        .catch(err => console.log(err.message));
     }
     
     return (
@@ -44,7 +52,7 @@ export default function PizzaList({toppingPizza}) {
                 <Button 
                     sm={1}
                     color="danger" 
-                    onClick={()=>deletePiza()} 
+                    onClick={deletePiza} 
                     style={{ marginBottom: '1rem'}}
                     className="float-right"
                 >Delete
